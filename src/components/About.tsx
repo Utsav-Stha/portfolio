@@ -9,43 +9,43 @@ const About = () => {
     {
       category: "Frontend",
       icon: <Code className="h-6 w-6" />,
-      technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vue.js", "HTML5", "CSS3"],
+      technologies: ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "HTML5", "CSS3"],
     },
     {
       category: "Backend",
       icon: <Database className="h-6 w-6" />,
-      technologies: ["Node.js", "Python", "PostgreSQL", "MongoDB", "Supabase", "REST APIs"],
+      technologies: ["Node.js", "Express.js", "PostgreSQL", "MongoDB", "Supabase", "REST APIs", "GraphQL"],
     },
     {
-      category: "Design",
-      icon: <Palette className="h-6 w-6" />,
-      technologies: ["Figma", "Adobe XD", "UI/UX Design", "Responsive Design", "Prototyping"],
-    },
-    {
-      category: "Tools & Others",
+      category: "Tools & DevOps",
       icon: <Globe className="h-6 w-6" />,
-      technologies: ["Git", "Docker", "AWS", "Vercel", "Jest", "Cypress", "Agile"],
+      technologies: ["Git", "GitHub", "Vercel", "Netlify", "Docker", "AWS", "Firebase"],
+    },
+    {
+      category: "Design & UI",
+      icon: <Palette className="h-6 w-6" />,
+      technologies: ["Figma", "Responsive Design", "UI/UX Principles", "Framer Motion", "shadcn/ui"],
     },
   ];
 
   const experience = [
     {
-      year: "2023 - Present",
-      title: "Senior Full Stack Developer",
-      company: "Tech Company",
-      description: "Leading development of modern web applications using React, Node.js, and cloud technologies.",
+      year: "2024 - Present",
+      title: "Full Stack Developer",
+      company: "Freelance",
+      description: "Building modern web applications for clients using Next.js, React, and Node.js. Specializing in e-commerce platforms and SaaS applications.",
     },
     {
-      year: "2021 - 2023",
+      year: "2023 - 2024",
       title: "Frontend Developer",
-      company: "Digital Agency",
-      description: "Built responsive web applications and collaborated with design teams to create exceptional user experiences.",
+      company: "Tech Startup",
+      description: "Developed responsive user interfaces and implemented modern design systems. Collaborated with backend teams to integrate APIs and optimize performance.",
     },
     {
-      year: "2020 - 2021",
-      title: "Junior Developer",
-      company: "Startup Inc.",
-      description: "Developed features for web applications and gained experience in full-stack development.",
+      year: "2022 - 2023",
+      title: "Junior Web Developer",
+      company: "Digital Agency",
+      description: "Started my professional journey building websites and learning modern development practices. Gained experience in React, JavaScript, and responsive design.",
     },
   ];
 
@@ -68,21 +68,20 @@ const About = () => {
             <h3 className="text-2xl font-semibold text-foreground mb-6">My Story</h3>
             <div className="space-y-4 text-muted-foreground">
               <p>
-                I'm a passionate full-stack developer with over 3 years of experience creating 
-                digital solutions that combine beautiful design with robust functionality. 
-                My journey began with a curiosity about how websites work, which quickly evolved 
-                into a deep love for coding and problem-solving.
+                I'm a passionate full-stack developer from Nepal with expertise in modern web technologies. 
+                My journey in software development started with curiosity about how digital products work, 
+                which evolved into a deep passion for creating innovative solutions that make a real impact.
               </p>
               <p>
-                I specialize in modern web technologies like React, Next.js, and Node.js, 
-                and I'm always eager to learn new tools and frameworks. When I'm not coding, 
-                you can find me exploring new design trends, contributing to open-source projects, 
-                or sharing knowledge with the developer community.
+                I specialize in the JavaScript ecosystem, particularly React, Next.js, and Node.js, 
+                with strong experience in TypeScript, database design, and cloud technologies. 
+                I enjoy building scalable applications that solve real-world problems while 
+                maintaining excellent user experience and code quality.
               </p>
               <p>
-                I believe in writing clean, maintainable code and creating user experiences 
-                that are not just functional, but delightful. Every project is an opportunity 
-                to learn something new and push the boundaries of what's possible on the web.
+                When I'm not coding, I love exploring new technologies, contributing to open-source projects, 
+                and sharing knowledge with the developer community. I believe in continuous learning 
+                and staying updated with the latest industry trends and best practices.
               </p>
             </div>
             
