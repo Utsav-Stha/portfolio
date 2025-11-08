@@ -39,11 +39,14 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // For now, simulate email sending (EmailJS setup needed)
-      // TODO: Set up EmailJS credentials in src/lib/emailjs.ts
-      console.log("Form submitted:", data);
+      // TODO: Uncomment this when EmailJS is configured
+      // const result = await sendEmail(data);
+      // if (!result.success) {
+      //   throw new Error(result.error);
+      // }
       
-      // Simulate API call
+      // For now, simulate email sending (remove this when EmailJS is ready)
+      console.log("Form submitted:", data);
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       setIsSubmitted(true);
@@ -54,6 +57,7 @@ const Contact = () => {
     } catch (error) {
       console.error("Error sending email:", error);
       // TODO: Add proper error handling with toast notifications
+      // You can add a state for error messages here
     } finally {
       setIsSubmitting(false);
     }
