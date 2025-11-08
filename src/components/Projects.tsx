@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Github, ExternalLink, Loader2 } from "lucide-react";
+import { Smartphone, Loader2 } from "lucide-react";
 import { supabase, type Project } from "@/lib/supabase";
 import { motion } from "framer-motion";
 
@@ -19,6 +19,7 @@ const Projects = () => {
   const fetchProjects = async () => {
     try {
       setLoading(true);
+      console.log('Fetching projects...'); // Debug log
       const { data, error } = await supabase
         .from('projects')
         .select('*')
@@ -29,6 +30,7 @@ const Projects = () => {
       }
 
       setProjects(data || []);
+      console.log('Projects loaded:', data); // Debug log
     } catch (error) {
       console.error('Error fetching projects:', error);
       setError('Failed to load projects');
@@ -153,52 +155,32 @@ const Projects = () => {
                   ))}
                 </div>
 
-                {/* Project Links */}
-                <div className="flex gap-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    asChild
-                    className="flex-1"
-                  >
-                    <a
-                      href={project.github_link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2"
+                {/* Play Store Link */}
+                {project.playstore_link && (
+                  <div className="flex">
+                    <Button
+                      size="sm"
+                      asChild
+                      className="w-full"
                     >
-                      <Github className="h-4 w-4" />
-                      Code
-                    </a>
-                  </Button>
-                  <Button
-                    size="sm"
-                    asChild
-                    className="flex-1"
-                  >
-                    <a
-                      href={project.live_demo_link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2"
-                    >
-                      <ExternalLink className="h-4 w-4" />
-                      Demo
-                    </a>
-                  </Button>
-                </div>
+                      <a
+                        href={project.playstore_link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2"
+                      >
+                        <Smartphone className="h-4 w-4" />
+                        Get on Play Store
+                      </a>
+                    </Button>
+                  </div>
+                )}
               </CardContent>
             </Card>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* View All Projects Button */}
-        <div className="text-center mt-12">
-          <Button variant="outline" size="lg">
-            View All Projects
-          </Button>
-        </div>
       </div>
     </section>
   );

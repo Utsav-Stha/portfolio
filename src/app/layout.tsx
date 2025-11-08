@@ -13,31 +13,31 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Utsav Stha | Full Stack Developer Portfolio",
+  title: "Utsav Shrestha | Full Stack Developer Portfolio",
   description: "Full Stack Developer from Nepal specializing in React, Next.js, and Node.js. View my projects, skills, and experience in modern web development.",
   keywords: "Full Stack Developer, React Developer, Next.js, Node.js, TypeScript, Web Development, Nepal, Portfolio",
-  authors: [{ name: "Utsav Stha" }],
-  creator: "Utsav Stha",
-  publisher: "Utsav Stha",
+  authors: [{ name: "Utsav Shrestha" }],
+  creator: "Utsav Shrestha",
+  publisher: "Utsav Shrestha",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://utsav-portfolio.vercel.app",
-    title: "Utsav Stha | Full Stack Developer Portfolio",
+    title: "Utsav Shrestha | Full Stack Developer Portfolio",
     description: "Full Stack Developer from Nepal specializing in React, Next.js, and Node.js. View my projects, skills, and experience in modern web development.",
-    siteName: "Utsav Stha Portfolio",
+    siteName: "Utsav Shrestha Portfolio",
     images: [
       {
         url: "https://utsav-portfolio.vercel.app/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Utsav Stha - Full Stack Developer Portfolio",
+        alt: "Utsav Shrestha - Full Stack Developer Portfolio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Utsav Stha | Full Stack Developer Portfolio",
+    title: "Utsav Shrestha | Full Stack Developer Portfolio",
     description: "Full Stack Developer from Nepal specializing in React, Next.js, and Node.js.",
     creator: "@utsav_stha",
     images: ["https://utsav-portfolio.vercel.app/og-image.jpg"],
@@ -63,7 +63,7 @@ export default function RootLayout({
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Utsav Stha",
+    "name": "Utsav Shrestha",
     "jobTitle": "Full Stack Developer",
     "description": "Full Stack Developer from Nepal specializing in React, Next.js, and Node.js",
     "url": "https://utsav-portfolio.vercel.app",

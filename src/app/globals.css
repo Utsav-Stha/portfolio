@@ -94,4 +94,15 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Prevent browser extension attributes from causing hydration issues */
+  [bis_skin_checked] {
+    /* Force consistent styling regardless of extension attributes */
+  }
+  
+  /* Ensure consistent rendering for all elements */
+  * {
+    /* Prevent layout shifts from extension modifications */
+    box-sizing: border-box;
+  }
 }

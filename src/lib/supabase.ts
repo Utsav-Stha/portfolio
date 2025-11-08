@@ -17,8 +17,34 @@ export interface Project {
   tech_stack: string[]
   github_link?: string
   live_demo_link?: string
+  playstore_link?: string
   order_index: number
   is_featured: boolean
+  created_at: string
+  updated_at: string
+}
+
+export interface Profile {
+  id: string
+  name: string
+  title: string
+  summary: string
+  location?: string
+  phone?: string
+  email?: string
+  created_at: string
+  updated_at: string
+}
+
+export interface Experience {
+  id: string
+  title: string
+  company: string
+  start_date: string
+  end_date?: string
+  is_current: boolean
+  description?: string
+  order_index: number
   created_at: string
   updated_at: string
 }

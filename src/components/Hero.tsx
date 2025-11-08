@@ -1,15 +1,34 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, Download } from "lucide-react";
 import { motion } from "framer-motion";
+import { downloadCV } from "@/lib/downloadCV";
+import { useState } from "react";
+import { useProfile } from "@/hooks/useProfile";
 
 const Hero = () => {
+  const [isDownloading, setIsDownloading] = useState(false);
+  const { profile, loading: profileLoading } = useProfile();
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const handleDownloadCV = async () => {
+    setIsDownloading(true);
+    
+    // Add a small delay to show the loading state for better UX
+    await new Promise(resolve => setTimeout(resolve, 800));
+    
+    const success = await downloadCV();
+    if (!success) {
+      alert('Failed to download CV. Please try again.');
+    }
+    setIsDownloading(false);
   };
 
   // Animation variants
@@ -51,7 +70,7 @@ const Hero = () => {
           >
             Hi, I'm{" "}
             <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
-              Utsav Stha
+              {profileLoading ? "Loading..." : profile?.name || "Utsav Shrestha"}
             </span>
           </motion.h1>
           
@@ -60,7 +79,7 @@ const Hero = () => {
             className="text-xl md:text-2xl lg:text-3xl text-muted-foreground mb-8 max-w-3xl mx-auto"
             variants={itemVariants}
           >
-            Full Stack Developer & UI/UX Designer
+            {profileLoading ? "Loading..." : profile?.title || "Flutter Developer"}
           </motion.h2>
           
           {/* Description */}
@@ -68,8 +87,7 @@ const Hero = () => {
             className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed"
             variants={itemVariants}
           >
-            I create beautiful, functional, and user-centered digital experiences. 
-            Passionate about clean code, modern design, and solving complex problems.
+            {profileLoading ? "Loading..." : profile?.summary || "Dedicated Flutter Developer with a strong foundation in mobile app development and a passion for crafting user-centric applications. Proficient in designing and building cross-platform solutions using the Flutter framework."}
           </motion.p>
           
           {/* CTA Buttons */}
@@ -83,6 +101,25 @@ const Hero = () => {
               className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 text-lg"
             >
               View My Work
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={handleDownloadCV}
+              disabled={isDownloading}
+              className="px-8 py-3 text-lg"
+            >
+              {isDownloading ? (
+                <>
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-current mr-2"></div>
+                  Downloading...
+                </>
+              ) : (
+                <>
+                  <Download className="h-4 w-4 mr-2" />
+                  Download CV
+                </>
+              )}
             </Button>
             <Button
               variant="outline"
@@ -109,20 +146,13 @@ const Hero = () => {
               <span className="sr-only">GitHub</span>
             </a>
             <a
-              href="https://linkedin.com/in/utsav-stha"
+              href="https://www.linkedin.com/in/utsav-shrestha-0a3343375/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
             >
               <Linkedin className="h-6 w-6" />
               <span className="sr-only">LinkedIn</span>
-            </a>
-            <a
-              href="mailto:utsav.stha@example.com"
-              className="text-muted-foreground hover:text-primary transition-colors"
-            >
-              <Mail className="h-6 w-6" />
-              <span className="sr-only">Email</span>
             </a>
           </motion.div>
           

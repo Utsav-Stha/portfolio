@@ -1,9 +1,11 @@
 "use client";
 
 import { Github, Linkedin, Mail, Twitter, Heart } from "lucide-react";
+import { useProfile } from "@/hooks/useProfile";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { profile, loading: profileLoading } = useProfile();
 
   const socialLinks = [
     {
@@ -13,18 +15,8 @@ const Footer = () => {
     },
     {
       name: "LinkedIn",
-      href: "https://linkedin.com/in/utsav-stha",
+      href: "https://www.linkedin.com/in/utsav-shrestha-0a3343375/",
       icon: <Linkedin className="h-5 w-5" />,
-    },
-    {
-      name: "Twitter",
-      href: "https://twitter.com/utsav_stha",
-      icon: <Twitter className="h-5 w-5" />,
-    },
-    {
-      name: "Email",
-      href: "mailto:utsav.stha@example.com",
-      icon: <Mail className="h-5 w-5" />,
     },
   ];
 
@@ -48,10 +40,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand Section */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold text-foreground">Utsav Stha</h3>
+            <h3 className="text-xl font-bold text-foreground">{profileLoading ? "Loading..." : profile?.name || "Utsav Shrestha"}</h3>
             <p className="text-muted-foreground max-w-md">
-              Full Stack Developer passionate about creating beautiful, 
-              functional, and user-centered digital experiences.
+              {profileLoading ? "Loading..." : profile?.summary || "Dedicated Flutter Developer with a strong foundation in mobile app development and a passion for crafting user-centric applications."}
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((link) => (
@@ -92,21 +83,21 @@ const Footer = () => {
             <div className="space-y-2 text-muted-foreground">
               <p>
                 <a
-                  href="mailto:utsav.stha@example.com"
+                  href={`mailto:${profile?.email || 'shrestha8502@gmail.com'}`}
                   className="hover:text-primary transition-colors"
                 >
-                  utsav.stha@example.com
+                  {profileLoading ? "Loading..." : profile?.email || "shrestha8502@gmail.com"}
                 </a>
               </p>
               <p>
                 <a
-                  href="tel:+97798XXXXXXXX"
+                  href={`tel:${profile?.phone || '+9779840660665'}`}
                   className="hover:text-primary transition-colors"
                 >
-                  +977 98XXXXXXXX
+                  {profileLoading ? "Loading..." : profile?.phone || "+977 9840660665"}
                 </a>
               </p>
-              <p>Kathmandu, Nepal</p>
+              <p>{profileLoading ? "Loading..." : profile?.location || "Kathmandu, Nepal"}</p>
             </div>
           </div>
         </div>
@@ -115,12 +106,7 @@ const Footer = () => {
         <div className="mt-12 pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-muted-foreground text-sm">
-              © {currentYear} Utsav Stha. All rights reserved.
-            </div>
-            <div className="flex items-center space-x-1 text-muted-foreground text-sm">
-              <span>Built with</span>
-              <Heart className="h-4 w-4 text-red-500" />
-              <span>using Next.js, TypeScript & Tailwind CSS</span>
+              © {currentYear} {profileLoading ? "Loading..." : profile?.name || "Utsav Shrestha"}. All rights reserved.
             </div>
           </div>
         </div>

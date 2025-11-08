@@ -70,13 +70,13 @@ const Contact = () => {
     {
       icon: <Phone className="h-5 w-5" />,
       label: "Phone",
-      value: "+977 98XXXXXXXX",
-      href: "tel:+97798XXXXXXXX",
+      value: "+977 9840660665",
+      href: "tel:+9779840660665",
     },
     {
       icon: <MapPin className="h-5 w-5" />,
       label: "Location",
-      value: "Kathmandu, Nepal",
+      value: "Teku, Kathmandu",
       href: "#",
     },
   ];

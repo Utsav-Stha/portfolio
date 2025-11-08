@@ -47,7 +47,7 @@ const Navigation = () => {
               onClick={() => scrollToSection("hero")}
               className="text-xl font-bold text-foreground hover:text-primary transition-colors"
             >
-              Utsav Stha
+              Utsav Shrestha
             </button>
           </div>
 
