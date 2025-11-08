@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink, Loader2 } from "lucide-react";
 import { supabase, type Project } from "@/lib/supabase";
+import { motion } from "framer-motion";
 
 const Projects = () => {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -33,6 +34,28 @@ const Projects = () => {
       setError('Failed to load projects');
     } finally {
       setLoading(false);
+    }
+  };
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { y: 50, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5
+      }
     }
   };
 
@@ -79,9 +102,17 @@ const Projects = () => {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" suppressHydrationWarning>
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" 
+          suppressHydrationWarning
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
           {projects.map((project) => (
-            <Card key={project.id} className="group hover:shadow-lg transition-all duration-300 overflow-hidden">
+            <motion.div key={project.id} variants={cardVariants}>
+              <Card className="group hover:shadow-lg transition-all duration-300 overflow-hidden h-full">
               {/* Project Image */}
               <div className="relative overflow-hidden">
                 <img
@@ -158,8 +189,9 @@ const Projects = () => {
                 </div>
               </CardContent>
             </Card>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* View All Projects Button */}
         <div className="text-center mt-12">
