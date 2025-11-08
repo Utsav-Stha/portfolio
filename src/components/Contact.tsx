@@ -39,13 +39,13 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // TODO: Replace with actual EmailJS integration
-      // await emailjs.send(serviceId, templateId, data, publicKey);
+      // For now, simulate email sending (EmailJS setup needed)
+      // TODO: Set up EmailJS credentials in src/lib/emailjs.ts
+      console.log("Form submitted:", data);
       
-      // Simulate API call for now
+      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 2000));
       
-      console.log("Form submitted:", data);
       setIsSubmitted(true);
       reset();
       
@@ -53,7 +53,7 @@ const Contact = () => {
       setTimeout(() => setIsSubmitted(false), 5000);
     } catch (error) {
       console.error("Error sending email:", error);
-      // TODO: Add proper error handling
+      // TODO: Add proper error handling with toast notifications
     } finally {
       setIsSubmitting(false);
     }

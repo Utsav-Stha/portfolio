@@ -1,50 +1,40 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink, Loader2 } from "lucide-react";
-
-// Placeholder project data - will be replaced with Supabase data
-const placeholderProjects = [
-  {
-    id: "1",
-    title: "E-Commerce Platform",
-    short_description: "Full-stack e-commerce solution with React and Node.js",
-    description: "A comprehensive e-commerce platform built with React, Node.js, and MongoDB. Features include user authentication, product catalog, shopping cart, payment integration, and admin dashboard.",
-    image_url: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop",
-    tech_stack: ["React", "Node.js", "MongoDB", "Stripe", "Tailwind CSS"],
-    github_link: "https://github.com",
-    live_demo_link: "https://example.com",
-    is_featured: true,
-  },
-  {
-    id: "2",
-    title: "Task Management App",
-    short_description: "Collaborative task management with real-time updates",
-    description: "A modern task management application with real-time collaboration features. Built with Next.js, TypeScript, and Supabase for seamless team productivity.",
-    image_url: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop",
-    tech_stack: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
-    github_link: "https://github.com",
-    live_demo_link: "https://example.com",
-    is_featured: true,
-  },
-  {
-    id: "3",
-    title: "Weather Dashboard",
-    short_description: "Beautiful weather app with location-based forecasts",
-    description: "An elegant weather dashboard that provides detailed forecasts, interactive maps, and location-based weather data using modern web technologies.",
-    image_url: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=500&h=300&fit=crop",
-    tech_stack: ["Vue.js", "OpenWeather API", "Chart.js", "CSS3"],
-    github_link: "https://github.com",
-    live_demo_link: "https://example.com",
-    is_featured: false,
-  },
-];
+import { supabase, type Project } from "@/lib/supabase";
 
 const Projects = () => {
-  const [projects] = useState(placeholderProjects);
-  const [loading] = useState(false);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
+  const fetchProjects = async () => {
+    try {
+      setLoading(true);
+      const { data, error } = await supabase
+        .from('projects')
+        .select('*')
+        .order('order_index', { ascending: true });
+
+      if (error) {
+        throw error;
+      }
+
+      setProjects(data || []);
+    } catch (error) {
+      console.error('Error fetching projects:', error);
+      setError('Failed to load projects');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   if (loading) {
     return (
@@ -53,6 +43,21 @@ const Projects = () => {
           <div className="text-center">
             <Loader2 className="h-8 w-8 animate-spin mx-auto text-primary" />
             <p className="mt-4 text-muted-foreground">Loading projects...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section id="projects" className="py-20 bg-muted/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="text-red-500 mb-4">{error}</p>
+            <Button onClick={fetchProjects} variant="outline">
+              Try Again
+            </Button>
           </div>
         </div>
       </section>
