@@ -20,6 +20,9 @@ export interface Project {
   playstore_link?: string
   order_index: number
   is_featured: boolean
+  company?: string
+  project_type?: string
+  role_in_project?: string
   created_at: string
   updated_at: string
 }

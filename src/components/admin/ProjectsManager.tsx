@@ -25,6 +25,9 @@ const ProjectsManager = () => {
     github_link: "",
     live_demo_link: "",
     playstore_link: "",
+    company: "",
+    project_type: "company",
+    role_in_project: "",
     order_index: 1,
     is_featured: false
   });
@@ -63,6 +66,9 @@ const ProjectsManager = () => {
       github_link: "",
       live_demo_link: "",
       playstore_link: "",
+      company: "",
+      project_type: "company",
+      role_in_project: "",
       order_index: (projects?.length || 0) + 1,
       is_featured: false
     });
@@ -87,6 +93,9 @@ const ProjectsManager = () => {
       github_link: project.github_link || "",
       live_demo_link: project.live_demo_link || "",
       playstore_link: project.playstore_link || "",
+      company: project.company || "",
+      project_type: project.project_type || "company",
+      role_in_project: project.role_in_project || "",
       order_index: project.order_index,
       is_featured: project.is_featured
     });
@@ -111,6 +120,9 @@ const ProjectsManager = () => {
         github_link: formData.github_link || null,
         live_demo_link: formData.live_demo_link || null,
         playstore_link: formData.playstore_link || null,
+        company: formData.company || null,
+        project_type: formData.project_type,
+        role_in_project: formData.role_in_project || null,
         order_index: formData.order_index,
         is_featured: formData.is_featured,
         updated_at: new Date().toISOString()
@@ -213,6 +225,11 @@ const ProjectsManager = () => {
                         </span>
                       )}
                     </div>
+                    {project.company && (
+                      <p className="text-sm font-medium text-primary">
+                        Developed at {project.company}
+                      </p>
+                    )}
                     <p className="text-sm text-muted-foreground mt-1">
                       {project.short_description}
                     </p>
@@ -301,6 +318,16 @@ const ProjectsManager = () => {
               </div>
               
               <div>
+                <Label htmlFor="company">Company</Label>
+                <Input
+                  id="company"
+                  value={formData.company}
+                  onChange={(e) => handleInputChange('company', e.target.value)}
+                  placeholder="e.g., Code Himalaya, Neo Software Pvt. Ltd"
+                />
+              </div>
+              
+              <div>
                 <Label htmlFor="image_url">Image URL</Label>
                 <Input
                   id="image_url"
@@ -368,6 +395,17 @@ const ProjectsManager = () => {
                 value={formData.tech_stack}
                 onChange={(e) => handleInputChange('tech_stack', e.target.value)}
                 placeholder="Flutter, Dart, Firebase, etc."
+              />
+            </div>
+            
+            <div>
+              <Label htmlFor="role_in_project">Your Role & Contributions</Label>
+              <Textarea
+                id="role_in_project"
+                value={formData.role_in_project}
+                onChange={(e) => handleInputChange('role_in_project', e.target.value)}
+                placeholder="e.g., Flutter Developer - Led UI development and implemented clean architecture patterns"
+                rows={2}
               />
             </div>
             

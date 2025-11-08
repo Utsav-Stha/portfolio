@@ -33,7 +33,7 @@ const About = () => {
       technologies: ["Dart", "Flutter", "Provider", "Riverpod", "GetX", "GoRoute"],
     },
     {
-      category: "Backend & Database",
+      category: "Data & Integration",
       icon: <Database className="h-6 w-6" />,
       technologies: ["Firebase", "Hive", "SQLite", "REST APIs", "Push Notifications"],
     },

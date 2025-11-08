@@ -95,11 +95,11 @@ const Projects = () => {
         {/* Section Header */}
         <div className="text-center mb-16" suppressHydrationWarning>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Featured Projects
+            Professional Projects
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Here are some of my recent projects that showcase my skills in web development, 
-            design, and problem-solving.
+            Here are some key projects I've contributed to during my professional experience, 
+            showcasing my skills in Flutter development and mobile app architecture.
           </p>
         </div>
 
@@ -133,6 +133,11 @@ const Projects = () => {
                 <CardTitle className="text-xl font-semibold group-hover:text-primary transition-colors">
                   {project.title}
                 </CardTitle>
+                {project.company && (
+                  <div className="text-sm font-medium text-primary mb-1">
+                    Developed at {project.company}
+                  </div>
+                )}
                 <CardDescription className="text-muted-foreground">
                   {project.short_description}
                 </CardDescription>
