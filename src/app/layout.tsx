@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio | Your Name",
-  description: "Professional portfolio showcasing projects, skills, and experience. Built with Next.js, TypeScript, and modern web technologies.",
+  title: "Portfolio | Utsav Stha",
+  description: "Full Stack Developer portfolio showcasing modern web applications, skills, and experience. Built with Next.js, TypeScript, and cutting-edge technologies.",
 };
 
 export default function RootLayout({

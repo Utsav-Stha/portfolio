@@ -48,7 +48,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand Section */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold text-foreground">Your Name</h3>
+            <h3 className="text-xl font-bold text-foreground">Utsav Stha</h3>
             <p className="text-muted-foreground max-w-md">
               Full Stack Developer passionate about creating beautiful, 
               functional, and user-centered digital experiences.
@@ -115,7 +115,7 @@ const Footer = () => {
         <div className="mt-12 pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-muted-foreground text-sm">
-              © {currentYear} Your Name. All rights reserved.
+              © {currentYear} Utsav Stha. All rights reserved.
             </div>
             <div className="flex items-center space-x-1 text-muted-foreground text-sm">
               <span>Built with</span>
