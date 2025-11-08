@@ -100,7 +100,7 @@ const Hero = () => {
             variants={itemVariants}
           >
             <a
-              href="https://github.com"
+              href="https://github.com/Utsav-Stha"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
@@ -109,7 +109,7 @@ const Hero = () => {
               <span className="sr-only">GitHub</span>
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://linkedin.com/in/utsav-stha"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
@@ -118,7 +118,7 @@ const Hero = () => {
               <span className="sr-only">LinkedIn</span>
             </a>
             <a
-              href="mailto:your.email@example.com"
+              href="mailto:utsav.stha@example.com"
               className="text-muted-foreground hover:text-primary transition-colors"
             >
               <Mail className="h-6 w-6" />

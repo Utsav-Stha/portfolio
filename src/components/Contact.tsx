@@ -63,19 +63,19 @@ const Contact = () => {
     {
       icon: <Mail className="h-5 w-5" />,
       label: "Email",
-      value: "your.email@example.com",
-      href: "mailto:your.email@example.com",
+      value: "utsav.stha@example.com",
+      href: "mailto:utsav.stha@example.com",
     },
     {
       icon: <Phone className="h-5 w-5" />,
       label: "Phone",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567",
+      value: "+977 98XXXXXXXX",
+      href: "tel:+97798XXXXXXXX",
     },
     {
       icon: <MapPin className="h-5 w-5" />,
       label: "Location",
-      value: "Your City, Country",
+      value: "Kathmandu, Nepal",
       href: "#",
     },
   ];

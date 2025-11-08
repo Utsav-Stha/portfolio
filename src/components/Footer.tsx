@@ -8,22 +8,22 @@ const Footer = () => {
   const socialLinks = [
     {
       name: "GitHub",
-      href: "https://github.com",
+      href: "https://github.com/Utsav-Stha",
       icon: <Github className="h-5 w-5" />,
     },
     {
       name: "LinkedIn",
-      href: "https://linkedin.com",
+      href: "https://linkedin.com/in/utsav-stha",
       icon: <Linkedin className="h-5 w-5" />,
     },
     {
       name: "Twitter",
-      href: "https://twitter.com",
+      href: "https://twitter.com/utsav_stha",
       icon: <Twitter className="h-5 w-5" />,
     },
     {
       name: "Email",
-      href: "mailto:your.email@example.com",
+      href: "mailto:utsav.stha@example.com",
       icon: <Mail className="h-5 w-5" />,
     },
   ];
@@ -92,21 +92,21 @@ const Footer = () => {
             <div className="space-y-2 text-muted-foreground">
               <p>
                 <a
-                  href="mailto:your.email@example.com"
+                  href="mailto:utsav.stha@example.com"
                   className="hover:text-primary transition-colors"
                 >
-                  your.email@example.com
+                  utsav.stha@example.com
                 </a>
               </p>
               <p>
                 <a
-                  href="tel:+15551234567"
+                  href="tel:+97798XXXXXXXX"
                   className="hover:text-primary transition-colors"
                 >
-                  +1 (555) 123-4567
+                  +977 98XXXXXXXX
                 </a>
               </p>
-              <p>Your City, Country</p>
+              <p>Kathmandu, Nepal</p>
             </div>
           </div>
         </div>
