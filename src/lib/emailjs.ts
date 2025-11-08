@@ -1,11 +1,11 @@
 import emailjs from '@emailjs/browser';
 
 // EmailJS configuration
-// TODO: Replace these with your actual EmailJS credentials from https://emailjs.com
+// EmailJS credentials configured
 export const EMAILJS_CONFIG = {
-  serviceId: 'service_xxxxxxx', // Replace with your EmailJS service ID
-  templateId: 'template_xxxxxxx', // Replace with your EmailJS template ID  
-  publicKey: 'xxxxxxxxxxxxxxx', // Replace with your EmailJS public key
+  serviceId: 'service_9o7ktas', // Your EmailJS service ID
+  templateId: 'template_hqm4l7s', // Your EmailJS template ID  
+  publicKey: 'hlUof7YWs4_NAvQGj', // Your EmailJS public key
 };
 
 // Initialize EmailJS (call this once in your app)
@@ -32,7 +32,7 @@ export const sendEmail = async (formData: {
         from_email: formData.email,
         subject: formData.subject,
         message: formData.message,
-        to_email: 'utsav.stha@example.com', // Your email
+        to_email: 'shrestha8502@gmail.com', // Your email
         reply_to: formData.email,
       },
       EMAILJS_CONFIG.publicKey

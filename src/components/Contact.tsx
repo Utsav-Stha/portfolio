@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Mail, MapPin, Phone, Send, Loader2, CheckCircle } from "lucide-react";
+import { sendEmail } from "@/lib/emailjs";
 
 // Form validation schema
 const contactSchema = z.object({
@@ -39,15 +40,11 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // TODO: Uncomment this when EmailJS is configured
-      // const result = await sendEmail(data);
-      // if (!result.success) {
-      //   throw new Error(result.error);
-      // }
-      
-      // For now, simulate email sending (remove this when EmailJS is ready)
-      console.log("Form submitted:", data);
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Send email using EmailJS
+      const result = await sendEmail(data);
+      if (!result.success) {
+        throw new Error(result.error);
+      }
       
       setIsSubmitted(true);
       reset();
@@ -67,8 +64,8 @@ const Contact = () => {
     {
       icon: <Mail className="h-5 w-5" />,
       label: "Email",
-      value: "utsav.stha@example.com",
-      href: "mailto:utsav.stha@example.com",
+      value: "shrestha8502@gmail.com",
+      href: "mailto:shrestha8502@gmail.com",
     },
     {
       icon: <Phone className="h-5 w-5" />,
