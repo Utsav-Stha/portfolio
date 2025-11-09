@@ -27,7 +27,7 @@ export default function ClientWrapper() {
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.type === 'attributes' && mutation.attributeName === 'bis_skin_checked') {
-          mutation.target.removeAttribute('bis_skin_checked');
+          (mutation.target as Element).removeAttribute('bis_skin_checked');
         }
       });
     });
