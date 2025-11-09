@@ -30,7 +30,6 @@ const Projects = () => {
       }
 
       setProjects(data || []);
-      console.log('Projects loaded:', data); // Debug log
     } catch (error) {
       console.error('Error fetching projects:', error);
       setError('Failed to load projects');
@@ -91,9 +90,9 @@ const Projects = () => {
 
   return (
     <section id="projects" className="py-20 bg-muted/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" suppressHydrationWarning>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" suppressHydrationWarning={true}>
         {/* Section Header */}
-        <div className="text-center mb-16" suppressHydrationWarning>
+        <div className="text-center mb-16" suppressHydrationWarning={true}>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Professional Projects
           </h2>
@@ -117,11 +116,34 @@ const Projects = () => {
               <Card className="group hover:shadow-lg transition-all duration-300 overflow-hidden h-full">
               {/* Project Image */}
               <div className="relative overflow-hidden">
-                <img
-                  src={project.image_url}
-                  alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
+                {project.image_url ? (
+                  <img
+                    src={project.image_url}
+                    alt={project.title}
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      // Show fallback
+                      const parent = target.parentElement;
+                      if (parent) {
+                        const fallback = parent.querySelector('.image-fallback') as HTMLElement;
+                        if (fallback) fallback.style.display = 'flex';
+                      }
+                    }}
+                  />
+                ) : null}
+                
+                {/* Fallback for missing or failed images */}
+                <div 
+                  className={`image-fallback w-full h-48 bg-muted flex items-center justify-center ${project.image_url ? 'hidden' : 'flex'}`}
+                >
+                  <div className="text-center">
+                    <div className="text-muted-foreground text-sm mb-1">No image available</div>
+                    <div className="text-xs text-muted-foreground/70">{project.title}</div>
+                  </div>
+                </div>
+                
                 {project.is_featured && (
                   <div className="absolute top-4 left-4 bg-primary text-primary-foreground px-2 py-1 rounded-full text-xs font-medium">
                     Featured

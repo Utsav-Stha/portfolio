@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { supabase, type Project } from "@/lib/supabase";
 import { Loader2, Plus, Save, Trash2, FolderOpen, Edit, ExternalLink } from "lucide-react";
+import ImageUpload from "@/components/ui/ImageUpload";
 
 const ProjectsManager = () => {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -327,13 +328,13 @@ const ProjectsManager = () => {
                 />
               </div>
               
-              <div>
-                <Label htmlFor="image_url">Image URL</Label>
-                <Input
-                  id="image_url"
-                  value={formData.image_url}
-                  onChange={(e) => handleInputChange('image_url', e.target.value)}
-                  placeholder="https://example.com/image.jpg"
+              <div className="md:col-span-2">
+                <ImageUpload
+                  currentImageUrl={formData.image_url}
+                  onImageChange={(url) => handleInputChange('image_url', url)}
+                  label="Project Image"
+                  placeholder="Enter image URL or upload from your computer"
+                  disabled={isUpdating}
                 />
               </div>
               
